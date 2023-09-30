@@ -9,8 +9,22 @@ function Pertinencia = pertinencia(value, trim)
     
     % Verifica se os pontos de definição do conjunto são únicos
     if numel(trim) == numel(unique(trim))
-        % Se os pontos são únicos, usa a função trianglePertinencia para calcular a pertinência
-        Pertinencia = trianglePertinencia(value, trim);
+            if value < trim(1)
+                % Valor é menor que o primeiro ponto, não pertence ao conjunto
+                Pertinencia = 0;
+            
+            elseif value >= trim(1) && value <= trim(2)
+                % Valor está dentro do triângulo, calcula a pertinência com base na inclinação à esquerda
+                Pertinencia = (value - trim(1)) / (trim(2) - trim(1));
+            
+            elseif value >= trim(2) && value <= trim(3)
+                % Valor está dentro do triângulo, calcula a pertinência com base na inclinação à direita
+                Pertinencia = (trim(3) - value) / (trim(3) - trim(2));
+            
+            else
+                % Valor não pertence ao conjunto
+                Pertinencia = 0;
+            end
     
     % Caso contrário, verifica os outros casos
     elseif trim(1) == trim(2)
@@ -35,28 +49,3 @@ function Pertinencia = pertinencia(value, trim)
     end
 end
 
-% Esta função calcula a pertinência de um valor a um conjunto fuzzy triangular
-% Entradas:
-% - value: O valor para o qual a pertinência será calculada.
-% - trim: Um vetor contendo os três pontos que definem o conjunto triangular.
-% Saídas:
-% - TrianglePertinencia: O grau de pertinência do valor ao conjunto triangular.
-
-function TrianglePertinencia = trianglePertinencia(value, trim)
-    if value < trim(1)
-        % Valor é menor que o primeiro ponto, não pertence ao conjunto
-        TrianglePertinencia = 0;
-    
-    elseif value >= trim(1) && value <= trim(2)
-        % Valor está dentro do triângulo, calcula a pertinência com base na inclinação à esquerda
-        TrianglePertinencia = (value - trim(1)) / (trim(2) - trim(1));
-    
-    elseif value >= trim(2) && value <= trim(3)
-        % Valor está dentro do triângulo, calcula a pertinência com base na inclinação à direita
-        TrianglePertinencia = (trim(3) - value) / (trim(3) - trim(2));
-    
-    else
-        % Valor não pertence ao conjunto
-        TrianglePertinencia = 0;
-    end
-end

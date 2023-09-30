@@ -54,7 +54,6 @@ function mostrarPertinencias(pressaoPedal, velocidadeCarro, velocidadeRoda)
     plot([pressaoPedal, pressaoPedal], [0, intersectionY_a], 'k--', 'LineWidth', 1, 'Color', [0, 0, 0, 0.3]);
 
     xlabel('Pressão do freio');
-    ylabel('Y');
     title('Pertinência da pressão');
     xlim([0 100]);
     ylim([0 1]);
@@ -93,8 +92,7 @@ function mostrarPertinencias(pressaoPedal, velocidadeCarro, velocidadeRoda)
     plot([0, velocidadeRoda], [intersectionY_r, intersectionY_r], 'k--', 'LineWidth', 1, 'Color', [0, 0, 0, 0.3]);
     plot([velocidadeRoda, velocidadeRoda], [0, intersectionY_r], 'k--', 'LineWidth', 1, 'Color', [0, 0, 0, 0.3]);
 
-    xlabel('Pressão do freio');
-    ylabel('Y');
+    xlabel('Velocidade');
     title('Pertinência da velocidade da roda');
     xlim([0 100]);
     ylim([0 1]);
@@ -133,8 +131,7 @@ function mostrarPertinencias(pressaoPedal, velocidadeCarro, velocidadeRoda)
     plot([0, velocidadeCarro], [intersectionY_r, intersectionY_r], 'k--', 'LineWidth', 1, 'Color', [0, 0, 0, 0.3]);
     plot([velocidadeCarro, velocidadeCarro], [0, intersectionY_r], 'k--', 'LineWidth', 1, 'Color', [0, 0, 0, 0.3]);
 
-    xlabel('Pressão do freio');
-    ylabel('Y');
+    xlabel('Velocidade');
     title('Pertinência da velocidade do carro');
     xlim([0 100]);
     ylim([0 1]);
